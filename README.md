@@ -4,7 +4,7 @@ A Repository for my CPS 493 classwork, Following along with the professor
 
 # Pippin Bacon
 
-![A photo of me]PippinGraduationSmaller2.png "Pippin"
+![A photo of me](PippinGraduationSmaller2.png "Pippin")
 
 
 

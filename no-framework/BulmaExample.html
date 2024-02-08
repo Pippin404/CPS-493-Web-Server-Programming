@@ -8,6 +8,7 @@
 </head>
 <body>
     
+  <div id="app">
     <!--Navbar-->
     <div class="bd-example is-paddingless">
         <nav class="navbar is-primary">
@@ -17,14 +18,14 @@
               <img src="https://bulma.io/images/bulma-logo-white.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
             
           </a>
-          <div class="navbar-burger" data-target="navMenuColorprimary-example">
+          <div class="navbar-burger"  :class="{'is-active':isMenuActive}" @click="isMenuActive=!isMenuActive" data-target="navMenuColorprimary-example">
             <span></span>
             <span></span>
             <span></span>
           </div>
         </div>
       
-        <div id="navMenuColorprimary-example" class="navbar-menu">
+        <div id="navMenuColorprimary-example" class="navbar-menu" :class="{'is-active':isMenuActive}">
           <div class="navbar-start">
             <a class="navbar-item" href="https://bulma.io/">
               Home
@@ -197,10 +198,11 @@
              
 
               <!--Github thingy-->
-          <article class="message is-success">
+              <!--V show inside is javascript-->
+          <article class="message is-success" v-show="showAlert">
             <div class="message-header">
-              <p>Make a Github Account</p>
-              <button class="delete" aria-label="delete"></button>
+              <p>{{ message }}</p>
+              <button  @click="showAlert=false" class="delete" aria-label="delete"></button>
             </div>
             <div class="message-body">
                 Go to <a href="https://github.com/">github.com</a> and create an account.
@@ -357,19 +359,34 @@
 
         </div>
       </div>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-      <script>
-
-        $(function(){
-
-          $('.delete').click(function(){
-            $(this).closest('.message').slideUp()
-
-          })
 
 
-        })
 
-      </script>
+
+      <!--All vue is controlling is this scrip-->
+      </div>
+
+        <script type="module">
+          import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+        //import package above ^
+
+          createApp({
+            setup() {
+              //Since javascript has no types, need to declare the type of the variable? use let instead of var
+              //constants dont change, lets do
+              //ref and reactive lets the varibles and lets change. Super important!
+              //show alert is changed back to const
+              const message = ref('Hello Vue!')
+              const showAlert = ref(true)
+              const isMenuActive = ref(false)
+              return {
+                message, showAlert, isMenuActive              
+              }
+            }
+          }).mount('#app')
+        </script>
+  <!--Pinning this script to the div id "app"-->
+
+
 </body>
 </html>

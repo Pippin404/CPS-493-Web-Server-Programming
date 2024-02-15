@@ -1,0 +1,19 @@
+{
+  "name": "cps-493-web-server-programming",
+  "version": "1.0.0",
+  "description": "A Repository for my CPS 493 classwork, Following along with the professor",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+
+  "scripts": {
+    "start": "node server/index.js"
+  },
+
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+
+
+}
+

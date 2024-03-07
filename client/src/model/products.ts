@@ -14,7 +14,7 @@ export interface Product {
     thumbnail: string;
     images: string[];
   }
-
+//adding a question mark next to a property means its option. Ex     brand?: string;
 
 
 export function getProducts(): Product[] {

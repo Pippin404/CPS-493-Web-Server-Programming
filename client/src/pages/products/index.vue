@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref } from 'vue';
+    import { ref, computed } from 'vue';
     import { type Product, getProducts } from "@/model/products";
     const products = ref([] as Product[]);
 
@@ -9,9 +9,11 @@
     };
 
     const cart = ref([] as CartItem[]);
+    
 
     function addToCart(product: Product) {
         const item = cart.value.find((item) => item.product.id === product.id);
+
         if (item) {
             item.quantity++;
         } else {
@@ -20,6 +22,9 @@
     }
 
 
+    //this const WAS a function, not a value
+    //Now I added computed, it updates and is now a object
+    const total = computed( () => cart.value.reduce((total, item) => total + item.product.price * item.quantity, 0) )
     products.value = getProducts();
 
 </script>
@@ -27,6 +32,8 @@
 
 
 <template>
+
+    <!--IMPORTANT SHIT!!-->
     <div class="product-list">
                 <div v-for="product in products" :key="product.id" class="card">
         <div class="card-image">
@@ -55,7 +62,7 @@
                         {{ item.product.title }} x {{ item.quantity }}
                     </li>
                 </ul>
-                {{ cart.length }} items totalling ${{ cart.reduce((total, item) => total + item.product.price * item.quantity, 0) }}
+                {{ cart.length }} items totalling ${{ total }}
             </h1>
 
 

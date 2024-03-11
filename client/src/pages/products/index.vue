@@ -2,31 +2,11 @@
     import { ref, computed } from 'vue';
     import { type Product, getProducts } from "@/model/products";
     import productCard from '@/components/productCard.vue';
+    import FlyOut from '@/components/FlyOut.vue';
+    import {  addToCart } from '@/viewModel/cart';
 
     const products = ref([] as Product[]);
 
-    type CartItem = {
-        product: Product;
-        quantity: number;
-    };
-
-    const cart = ref([] as CartItem[]);
-    
-
-    function addToCart(product: Product) {
-        const item = cart.value.find((item) => item.product.id === product.id);
-
-        if (item) {
-            item.quantity++;
-        } else {
-            cart.value.push({ product, quantity: 1 });
-        }
-    }
-
-
-    //this const WAS a function, not a value
-    //Now I added computed, it updates and is now a object
-    const total = computed( () => cart.value.reduce((total, item) => total + item.product.price * item.quantity, 0) )
     products.value = getProducts();
 
 </script>
@@ -84,14 +64,5 @@
 
     
 
-    .cart li{
-        display: flex;
-        align-items: center;
-        margin: 1rem;
-    }
-
-    .cart img{
-        margin-right: 1rem;
-        size: 5px;
-    }
+    
 </style>

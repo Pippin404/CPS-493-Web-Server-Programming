@@ -2,6 +2,8 @@
 import { RouterLink } from 'vue-router';
 import { ref } from 'vue';
 
+import { total } from '@/viewModel/cart';
+
 let isActive = ref(false);
 
 function toggleMenu() {
@@ -64,13 +66,18 @@ function toggleMenu() {
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
+          <a class="button is-warning">
+            <span class="icon">
+              <i class="fas fa-shopping-cart"></i>
+            </span>
+            <span>{{ total }}</span>
           </a>
         </div>
+
+        
+
+
+
       </div>
     </div>
   </div>

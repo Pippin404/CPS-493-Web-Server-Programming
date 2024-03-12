@@ -18,7 +18,7 @@
     <div class="product-list">
         <ProductCard    v-for="product in products" :key="product.id"
                         :product="product" @addToCart="addToCart"
-                    />
+        />
     </div>
 
     <FlyOut :isOpen="isOpen" >

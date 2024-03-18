@@ -1,51 +1,32 @@
 <script setup lang="ts">
 
-    const props=defineProps<{
-        isOpen?: boolean
-    }>()
-
+const props = defineProps<{
+    isOpen?: boolean
+}>()
 </script>
 
 <template>
-    <div class="flyout" :class="{ open: isOpen }">
-
+    <div class="flyout" :class="{ open: isOpen}">
         <slot></slot>
-
     </div>
 </template>
 
 <style scoped>
-    .flyout{
+    .flyout {
         position: fixed;
         top: 0;
         right: 0;
-        width: 300px;
+        width: 20rem;
         height: 100%;
-        background-color: #ffffff;
-        border-color: aquamarine;
+        background-color: white;
+        border: 1px solid #ccc;
+        box-shadow: -1px 0 5px 0 rgba(0,0,0,.5);
         z-index: 100;
-        box-shadow: -1px 0 5px rgba(0, 0, 0, 0.1);
-        transform: translateX(80%);
-        transition: transform 1s ease-in-out;
+        transform: translateX(90%);
+        transition: transform 1s;
+        padding: 1rem;
     }
-
-    .flyout.open, .flyout:hover{
-
+    .flyout.open, .flyout:hover {
         transform: translateX(0);
-    }
-    .cart li{
-        display: flex;
-        align-items: center;
-        margin: 1rem;
-    }
-
-    .cart img{
-        margin-right: 1rem;
-        size: 5px;
-    }
-    .product-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
     }
 </style>

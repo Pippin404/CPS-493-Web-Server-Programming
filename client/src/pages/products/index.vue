@@ -5,6 +5,7 @@
     import FlyOut from '@/components/FlyOut.vue';
     import { addToCart, isOpen } from '@/viewModel/cart';
     import ShoppingCart from '@/components/ShoppingCart.vue';
+    import loginBadge from '@/components/loginBadge.vue';
 
 
     const products = ref([] as Product[])

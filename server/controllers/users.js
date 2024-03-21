@@ -1,29 +1,28 @@
+const users = require('../model/users')
 const express = require('express');
 //this is not a primary pipeline, its a router pipeline like in index.js. Offshoot pipeline. Super similar.
 const app=express.Router();
-
+//controller knows about express. model does not (See users for its domain)
 
 
 app
     .get('/', (req, res) => {
-        res.send(
-            {name: "John", age: 100},
-            {name: "Jane", age: 100}
-        );
+        const all = users.getAll();
+        res.send(all)
     })
     .get('/test', (req, res) => {
-        res.send(
-            {name: "test user" , age: 30}
-        );
+        const testUser = users.get(1);
+        res.send(testUser);
+    })
+    .get('/:id', (req, res) => {
+        const user = users.get(req.params.id);
+        res.send(user);
     })
 
 
 const village = "New Paltz";
-
 function hello(){
     return `Hello from ${village}`;
 }
 
-module.exports = {
-    hello,village
-}
+module.exports = app;

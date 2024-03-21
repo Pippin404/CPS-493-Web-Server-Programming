@@ -1,0 +1,5 @@
+### 
+GET http://google.com
+
+###
+GET https://cdn.dummyjson.com/product-images/1/thumbnail.jpg

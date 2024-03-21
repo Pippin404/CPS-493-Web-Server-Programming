@@ -9,7 +9,7 @@ const PORT = 3000;
 app.get('/', (req, res) => {
   res.send(users.hello());
 })
-.use ('/users', users);
+.use ('/api/v1//users', users);
 
 
 

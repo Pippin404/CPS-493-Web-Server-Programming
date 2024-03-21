@@ -6,10 +6,8 @@ const app = express();
 const PORT = 3000;
 
 //set up your routes
-app.get('/', (req, res) => {
-  res.send(users.hello());
-})
-.use ('/api/v1//users', users);
+app
+  .use ('/api/v1/users', users);
 
 
 

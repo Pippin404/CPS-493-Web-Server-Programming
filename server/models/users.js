@@ -11,10 +11,15 @@ function get(id){
     return data.items.find(item => item.id == id);
 }
 
-
+function search(q) {
+    return data.items.filter(item => 
+        new RegExp(q, 'i').test(item.firstName) ||
+        new RegExp(q, 'i').test(item.lastName) ||
+        new RegExp(q, 'i').test(item.email) );
+}
 
 
 module.exports = {
-    getAll, get
+    getAll, get, search
     //getAll is sending a pointer, not a function caller
 }

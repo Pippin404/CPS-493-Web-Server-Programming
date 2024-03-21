@@ -18,6 +18,13 @@ app
         const user = users.get(req.params.id);
         res.send(user);
     })
+    .get('/search', (req, res) => {
+
+        const search = req.query.q;
+        const result = users.search(search);
+        res.send(result);
+
+    })
 
 
 const village = "New Paltz";
